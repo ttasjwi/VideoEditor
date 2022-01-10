@@ -23,3 +23,16 @@
 
 ---
 
+## [Work 02] 비디오
+
+### (v 2.01) Video enum 생성
+
+정해진 비디오들을 기반으로 관리하는 것이므로 enum으로 Video 생성
+
+- enum으로 비디오들을 생성.
+  - 필드 : id(String), title(name), time(second)
+  - getter : getID, getTitle, getTime
+
+---
+
+
