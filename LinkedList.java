@@ -81,10 +81,10 @@ public class LinkedList<E> implements List<E> {
         return -1;
     }
 
-    // TODO : 객체를 포함하고 있는지 여부 반환
+    // 객체를 포함하고 있는지 여부 반환
     @Override
     public boolean contains(Object o) {
-        return false;
+        return indexOf(o) >= 0; // 찾아낸 index가 0 이상인가?
     }
 
     // 데이터를 삽입가능한 인덱스인가?

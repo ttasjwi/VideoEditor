@@ -137,5 +137,10 @@ LinkedList에서 지정 객체가 속한 index를 찾아내 반환한다.
   - o가 null이 아닐 경우 : 첫 요소부터 완전탐색하여 동등하면 반환
   - 그럼에도 못 찾아낼 경우 : -1 반환
 
----
+### (v 3.08) LinkedList - contains 메서드 구현
 
+LinkedList에 지정 객체가 속해있는지 여부를 반환
+
+- `contains(Object o)` : 지정 객체가 속해있는지 여부를 반환
+
+---
