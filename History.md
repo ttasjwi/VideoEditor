@@ -97,4 +97,12 @@ LinkedList의 저장데이터 갯수를 반환하는 size, isEmpty 메서드를 
   - data : 저장 객체
   - next: 뒷 노드
 
+### (v 3.04) LinkedList - add 메서드 구현
+
+LinkedList에 새로운 요소를 추가하는 add 메서드를 구현했다.
+
+- add(E element) : 실질적으로 linkToTail 메서드를 호출하여 실행, true를 반환함
+  - linkToTail(element) : 기존에 존재하던 tail의 next에 element를 연결함
+    - tail이 존재하지 않을 경우(기존 list에 데이터가 존재하지 않은 상황일 경우) : 추가된 node를 head로 함
+
 ---

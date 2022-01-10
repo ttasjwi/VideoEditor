@@ -37,10 +37,11 @@ public class LinkedList<E> implements List<E> {
         return this.size == 0;
     }
 
-    //TODO : 데이터 추가
+    // 데이터 추가(맨 끝)
     @Override
     public boolean add(E element) {
-        return false;
+        linkToTail(element);
+        return true;
     }
 
     //TODO : 데이터 삽입
@@ -65,5 +66,19 @@ public class LinkedList<E> implements List<E> {
     @Override
     public boolean contains(Object o) {
         return false;
+    }
+
+    // 기존 tail에 element를 연결한다.
+    private void linkToTail(E element) {
+        Node<E> oldTail = this.tail; // 리스트의 마지막 노드를 가져옴
+        Node<E> newTail = new Node<>(oldTail, element, null); // 삽입할 새로운 노드 생성
+        this.tail = newTail; // 이제 이 노드가 tail이다.
+
+        if (oldTail==null) { // 기존 Tail이 null 이다 : 원래 리스트에 아무 것도 존재하지 않는다.
+            this.head = newTail; // 첫번째 요소이므로 head 지정
+        } else {
+            oldTail.next = newTail; // 기존 tail이 존재하므로, oldTail에 newTail을 next로 연결함.
+        }
+        size ++;
     }
 }
