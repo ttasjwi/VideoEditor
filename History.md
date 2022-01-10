@@ -78,4 +78,12 @@ Video -> VideoClip 클래스명 변경, VideoClip 클래스의 상수명 변경
 
 인터페이스 List를 생성했다. 이는 Java API로 지원되는 컬렉션 프레임워크와 다르며, 일부 기능만 구현하도록 하기로 했다.
 
+### (v 3.02) LinkedList - size(), isEmpty() 구현
+
+LinkedList의 저장데이터 갯수를 반환하는 size, isEmpty 메서드를 구현했다.
+
+- LinkedList 멤버변수 : size
+- `size()` : 현재 리스트의 size 반환
+- `isEmpty()` : 현재 리스트의 size값이 0일 경우 true 반환
+
 ---
