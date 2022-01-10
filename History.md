@@ -152,3 +152,8 @@ List 인터페이스에 get메서드를 추가했다. `Optional<E>`을 반환하
 - `Optional<E> get(int index);`
 
 ---
+
+
+###(v 3.10) LinkedList - get 메서드 구현
+
+- LinkedList에 지정 index에 위치한 node에서 data(객체)를 추출하는 get 메서드를 구현함

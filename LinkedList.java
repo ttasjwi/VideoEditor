@@ -65,6 +65,13 @@ public class LinkedList<E> implements List<E> {
         return Optional.ofNullable(unlink(findNodeByIndex(index)));
     }
 
+    // 데이터 반환
+    @Override
+    public Optional<E> get(int index) {
+        if (!isAccessableIndex(index)) return Optional.empty();
+        return Optional.ofNullable(findNodeByIndex(index).data);
+    }
+
     // 객체가 존재하는 index 반환
     @Override
     public int indexOf(Object o) {
