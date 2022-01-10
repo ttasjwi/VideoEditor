@@ -114,4 +114,16 @@ LinkedList에 새로운 요소를 원하는 인덱스에 삽입하는 메서드�
   - `linkToPrev(Node<E> oldNode, E element)` : oldNode의 앞에 있는 prev 뒤에 새 요소를 연결하고, 요소 뒤에 oldNode를 추가함
   - `findNodeByIndex(int index)` : 지정 index에 대응하는 Node를 반환. (여기서 인자로 넣어진 index는 유효값임을 가정)
 
+
+### (v 3.06) LinkedList - delete 메서드 구현
+
+LinkedList에서 지정 index에 위치한 요소를 삭제하는 메서드를 구현했다.
+
+- delete(int index) : 인덱스에 위치한 객체 제거
+  - 유효하지 않은 인덱스거나, null이 저장된 node일 경우 `Optional.empty()` 반환
+    - 유효성 검사 : `isAccessableIndex(int index)`
+  - `unlink(Node<E> node)` : 연결을 끊고 data를 Optional로 반환
+    - 전 후에 위치한 노드들과 연결을 끊음.
+    - 연결 해제 후 prev가 tail이 되거나, next가 head가 되는 경우도 고려
+  
 ---

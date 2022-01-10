@@ -58,11 +58,11 @@ public class LinkedList<E> implements List<E> {
         return;
     }
 
-
-    //TODO : 데이터 삭제
+    // 데이터 삭제
     @Override
     public Optional<E> delete(int index) {
-        return Optional.empty();
+        if (!isAccessableIndex(index)) return Optional.empty();
+        return Optional.ofNullable(unlink(findNodeByIndex(index)));
     }
 
     // TODO : 객체가 존재하는 index 반환
@@ -80,6 +80,11 @@ public class LinkedList<E> implements List<E> {
     // 데이터를 삽입가능한 인덱스인가?
     private boolean isInsertableIndex (int index) {
         return 0 <= index && index <= this.size;
+    }
+
+    // 접근 가능한 인덱스인가? (데이터가 저장된 인덱스인가?)
+    private boolean isAccessableIndex(int index) {
+        return 0 <= index && index < this.size;
     }
 
     // 지정 Node의 자리를 대체하여 새로운 요소를 삽입한다.
@@ -131,5 +136,32 @@ public class LinkedList<E> implements List<E> {
             }
             return node;
         }
+    }
+
+    // 지정 node의 연결을 끊는다. 앞과 뒤에 연결된 node가 존재하면 제거한다.
+    private E unlink(Node<E> node) {
+        E element = node.data;
+        Node<E> prev = node.prev;
+        Node<E> next = node.next;
+
+        // unlink할 node의 앞 node의 연결관계를 재갱신
+        if (prev == null) {
+            this.head = next;
+        } else {
+            prev.next = next;
+            node.prev = null; // prev node가 여전히 남아있으므로 제거
+        }
+
+        // unlink할 node의 뒷 node의 연결관계를 재갱신
+        if (next == null) {
+            this.tail = prev;
+        } else {
+            next.prev = prev;
+            node.next = null; // next node가 여전히 남아있으므로 제거
+        }
+
+        node.data = null; // unlink할 node에 남아있는 data 제거
+        size --;
+        return element;
     }
 }
