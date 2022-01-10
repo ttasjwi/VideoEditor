@@ -4,6 +4,27 @@ public class LinkedList<E> implements List<E> {
 
     private int size = 0;
 
+    private Node<E> head; // 첫번째 Node
+    private Node<E> tail; // 마지막 Node
+
+    private static class Node<E> {
+
+        // 앞의 Node
+        Node<E> prev;
+
+        // 뒤의 Node
+        Node<E> next;
+
+        // 저장 데이터
+        E data;
+
+        Node(Node<E> prev, E data, Node<E> next) {
+            this.prev = prev;
+            this.data = data;
+            this.next = next;
+        }
+    }
+
     // 저장 데이터 갯수
     @Override
     public int size() {

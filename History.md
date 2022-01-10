@@ -86,4 +86,15 @@ LinkedList의 저장데이터 갯수를 반환하는 size, isEmpty 메서드를 
 - `size()` : 현재 리스트의 size 반환
 - `isEmpty()` : 현재 리스트의 size값이 0일 경우 true 반환
 
+### (v 3.03) LinkedList - 내부 클래스 Node 생성 및 head, tail 멤버변수 추가
+
+내부 클래스 Node 클래스를 생성하고, LinkedList의 멤버변수로 head, tail을 추가했다.
+
+- head : 첫번째 인덱스의 노드
+- tail : 마지막 인덱스의 노드
+- Node : 연결의 최소 단위
+  - prev : 앞 노드
+  - data : 저장 객체
+  - next: 뒷 노드
+
 ---
