@@ -127,3 +127,15 @@ LinkedList에서 지정 index에 위치한 요소를 삭제하는 메서드를 �
     - 연결 해제 후 prev가 tail이 되거나, next가 head가 되는 경우도 고려
   
 ---
+
+### (v 3.07) LinkedList - indexOf 메서드 구현
+
+LinkedList에서 지정 객체가 속한 index를 찾아내 반환한다.
+
+- indexOf(Object o)
+  - o가 null일 경우 : 첫 요소부터 완전탐색하여 null이 속한 index를 찾아냄.
+  - o가 null이 아닐 경우 : 첫 요소부터 완전탐색하여 동등하면 반환
+  - 그럼에도 못 찾아낼 경우 : -1 반환
+
+---
+

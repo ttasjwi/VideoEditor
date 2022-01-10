@@ -65,10 +65,20 @@ public class LinkedList<E> implements List<E> {
         return Optional.ofNullable(unlink(findNodeByIndex(index)));
     }
 
-    // TODO : 객체가 존재하는 index 반환
+    // 객체가 존재하는 index 반환
     @Override
     public int indexOf(Object o) {
-        return 0;
+        Node<E> node = head;
+        if (o == null) {
+            for (int i= 0; i<size; i++, node = node.next) {
+                if (node.data == null) return i;
+            }
+        } else {
+            for (int i= 0; i<size; i++, node = node.next) {
+                if (node.data.equals(o)) return i;
+            }
+        }
+        return -1;
     }
 
     // TODO : 객체를 포함하고 있는지 여부 반환
