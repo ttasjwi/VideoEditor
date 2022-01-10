@@ -71,3 +71,11 @@ Video -> VideoClip 클래스명 변경, VideoClip 클래스의 상수명 변경
 - DOG_NYAONG 상수를 DOG_MEW 로 상수명을 변경했다.
 
 ---
+
+## [Work 03] LinkedList 구현하기
+
+### (v 3.01) List 인터페이스 생성
+
+인터페이스 List를 생성했다. 이는 Java API로 지원되는 컬렉션 프레임워크와 다르며, 일부 기능만 구현하도록 하기로 했다.
+
+---
