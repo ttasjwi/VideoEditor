@@ -104,5 +104,14 @@ LinkedList에 새로운 요소를 추가하는 add 메서드를 구현했다.
 - add(E element) : 실질적으로 linkToTail 메서드를 호출하여 실행, true를 반환함
   - linkToTail(element) : 기존에 존재하던 tail의 next에 element를 연결함
     - tail이 존재하지 않을 경우(기존 list에 데이터가 존재하지 않은 상황일 경우) : 추가된 node를 head로 함
+    
+### (v 3.05) LinkedList - insert 메서드 구현
+
+LinkedList에 새로운 요소를 원하는 인덱스에 삽입하는 메서드를 구현했다.
+
+- insert(int index, E element) : 인덱스에 객체 삽입
+  - `isInsertableIndex (int index)` : 지정 인덱스가 삽입 가능한 인덱스 번호인가?
+  - `linkToPrev(Node<E> oldNode, E element)` : oldNode의 앞에 있는 prev 뒤에 새 요소를 연결하고, 요소 뒤에 oldNode를 추가함
+  - `findNodeByIndex(int index)` : 지정 index에 대응하는 Node를 반환. (여기서 인자로 넣어진 index는 유효값임을 가정)
 
 ---

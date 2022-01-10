@@ -44,11 +44,20 @@ public class LinkedList<E> implements List<E> {
         return true;
     }
 
-    //TODO : 데이터 삽입
+    // 데이터 삽입
     @Override
     public void insert(int index, E element) {
+        if (!isInsertableIndex(index)) return;
 
+        // 마지막 인덱스 다음 인덱스이면, 맨 마지막에 놓아지는 것
+        if (index==size) {
+            linkToTail(element);
+        } else {
+            linkToPrev(findNodeByIndex(index), element);
+        }
+        return;
     }
+
 
     //TODO : 데이터 삭제
     @Override
@@ -68,6 +77,28 @@ public class LinkedList<E> implements List<E> {
         return false;
     }
 
+    // 데이터를 삽입가능한 인덱스인가?
+    private boolean isInsertableIndex (int index) {
+        return 0 <= index && index <= this.size;
+    }
+
+    // 지정 Node의 자리를 대체하여 새로운 요소를 삽입한다.
+    private void linkToPrev(Node<E> oldNode, E element) {
+        Node<E> prev = oldNode.prev; // 기존 node의 앞 node
+        Node<E> newNode = new Node<>(prev, element, oldNode); // 새 node 생성
+        oldNode.prev = newNode; // 기존 node의 prev에 newNode 연결
+
+        // 앞 node가 없다. -> 새 node는 head가 됨
+        if (prev == null) {
+            this.head = newNode;
+        } else {
+            // 앞 node가 있으면 앞 노드에 연결
+            prev.next = newNode;
+        }
+        size ++;
+        return;
+    }
+
     // 기존 tail에 element를 연결한다.
     private void linkToTail(E element) {
         Node<E> oldTail = this.tail; // 리스트의 마지막 노드를 가져옴
@@ -80,5 +111,25 @@ public class LinkedList<E> implements List<E> {
             oldTail.next = newTail; // 기존 tail이 존재하므로, oldTail에 newTail을 next로 연결함.
         }
         size ++;
+    }
+
+    // 지정 index에 위치한 Node를 반환한다. (유효값이 입력됐을 때를 전제로 하는 메서드다.)
+    private Node<E> findNodeByIndex(int index) {
+        int middleIndex = size/2; // 2로 나누고 나머지를 버렸을 때의 인덱스를 기점으로 생각
+
+        // 가운데보다 앞이면 맨 앞부터 탐색한다.
+        if (index < middleIndex) {
+            Node<E> node = this.head;
+            for (int i=0; i<index; i++) { // 0번, 1번, ... index번 다음으로 넘어감.
+                node = node.next;
+            }
+            return node;
+        } else {
+            Node<E> node = this.tail;
+            for (int i=size-1; i>index; i--) { // 끝에서부터 node를 탐색
+                node = node.prev;
+            }
+            return node;
+        }
     }
 }
