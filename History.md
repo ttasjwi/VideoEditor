@@ -144,3 +144,11 @@ LinkedList에 지정 객체가 속해있는지 여부를 반환
 - `contains(Object o)` : 지정 객체가 속해있는지 여부를 반환
 
 ---
+
+###(v 3.09) List - get 추상메서드 추가
+
+List 인터페이스에 get메서드를 추가했다. `Optional<E>`을 반환하도록 했다.
+
+- `Optional<E> get(int index);`
+
+---

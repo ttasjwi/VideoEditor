@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.Optional;
 
 public interface List<E> {
@@ -10,6 +11,9 @@ public interface List<E> {
 
     // 삭제
     Optional<E> delete(int index);
+
+    // 데이터 반환
+    Optional<E> get(int index);
 
     // 보존 데이터의 갯수
     int size();
