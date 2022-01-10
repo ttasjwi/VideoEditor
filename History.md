@@ -35,4 +35,14 @@
 
 ---
 
+### (v 2.02) Video getter 테스트코드 추가
+
+Video의 getter들이 정상적으로 작동하는지에 대한 테스트코드를 작성했다.
+
+- getIdTest() : id를 정상적으로 반환하는지 테스트
+- getTitleTest() : title을 정상적으로 반환하는지 테스트
+- getTimeTest() : time을 정상적으로 반환하는지 테스트
+
+---
+
 
