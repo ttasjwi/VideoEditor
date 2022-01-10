@@ -1,3 +1,6 @@
+import java.util.Optional;
+import java.util.stream.Stream;
+
 public enum Video {
 
     TTASJWI_EAT("ttasjwi_eat", "땃쥐가 밥어요", 13),
@@ -13,6 +16,8 @@ public enum Video {
     HELLO_WORLD("hello-world", "Hello World 치기", 3),
     HONUX_EAT("honux-eat", "호눅스 먹방", 2),
     PIKACHU("pikachu", "피카츄, 22900V!", 11);
+
+    public static final Video[] VIDEOS = Video.values();
 
     private String id;
     private String title;
@@ -35,6 +40,13 @@ public enum Video {
 
     public int getTime() {
         return this.time;
+    }
+
+    // 지정 id와 일치하는 Video를 반환한다.
+    public static Optional<Video> of(String id) {
+        return Stream.of(VIDEOS)
+                .filter(video -> video.getId().equals(id))
+                .findAny();
     }
 
 }

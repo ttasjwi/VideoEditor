@@ -45,4 +45,16 @@ Video의 getter들이 정상적으로 작동하는지에 대한 테스트코드�
 
 ---
 
+### (v 2.03) of 메서드 추가, 테스트 코드 추가
+
+id로 Video를 검색해서 `Optional<Video>`로 반환하는 `of`메서드 및 테스트코드를 추가했다.
+
+- of(String id) : Video들 중에서 id가 일치하는 Video를 찾아서 `Optional<Video>`로 반환한다.
+  - 만약 존재하지 않으면 `Optional.empty()`를 반환한다.
+
+- 테스트코드
+  - `ofTest1()` : 존재하는 id들 전체로 일일이 검색해서 Video가 정상적으로 반환되는지 테스트
+  - `ofTest2()` : 존재하지 않는 id로 검색했을 때 `Optional.empty()`가 반환되는지 테스트
+
+---
 
