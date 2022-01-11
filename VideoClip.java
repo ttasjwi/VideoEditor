@@ -1,36 +1,23 @@
-import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.Objects;
 
-public enum VideoClip {
+public class VideoClip {
 
-    TTASJWI_EAT("ttasjwi_eat", "땃쥐가 밥어요", 13),
-    SUN_RISE_WEST("sun_rise_west", "해가 서쪽에서 떠요", 7),
-    TTASCAT_BARK("ttascat_bark", "땃고양이가 멍멍해요", 5),
-    RABBIT_JUMP("rabbit_jump", "토끼가 깡총깡총 뛰어요", 8),
-    RM_RF("rm_rf", "서버 DB에 rm -rf / 하기", 14),
-    GIT_PUSH_FORCE("git_push_force", "리베이스한거 회사 서버에 git push --force 하기", 12),
-    CLOSE_DB("close_db", "DB 전원 내려감", 4),
-    DOG_MEW("dog_mew", "개가 냐옹냐옹", 7),
-    PIG_FLY("pig_fly", "돼지가 날아다녀요", 10),
-    STOCK_CRASH("stock_crash", "회사 주가가 폭락해요", 1),
-    HELLO_WORLD("hello-world", "Hello World 치기", 3),
-    HONUX_EAT("honux-eat", "호눅스 먹방", 2),
-    PIKACHU("pikachu", "피카츄, 22900V!", 11);
-
-    public static final VideoClip[] VIDEO_CLIPS = VideoClip.values();
-
-    private String id;
+    private Long id;
     private String title;
     private int time;
 
-
-    VideoClip(String id, String title, int time) {
-        this.id = id;
+    public VideoClip(String title, int time) {
         this.title = title;
         this.time = time;
     }
 
-    public String getId() {
+    public void initId(Long initId) {
+        if (id == null) {
+            this.id = initId;
+        }
+    }
+
+    public Long getId() {
         return this.id;
     }
 
@@ -42,11 +29,16 @@ public enum VideoClip {
         return this.time;
     }
 
-    // 지정 id와 일치하는 Video를 반환한다.
-    public static Optional<VideoClip> of(String id) {
-        return Stream.of(VIDEO_CLIPS)
-                .filter(video -> video.getId().equals(id))
-                .findAny();
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        VideoClip videoClip = (VideoClip) o;
+        return id.equals(videoClip.id);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

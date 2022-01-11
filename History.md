@@ -157,3 +157,22 @@ List 인터페이스에 get메서드를 추가했다. `Optional<E>`을 반환하
 ###(v 3.10) LinkedList - get 메서드 구현
 
 - LinkedList에 지정 index에 위치한 node에서 data(객체)를 추출하는 get 메서드를 구현함
+
+---
+
+# [Work 04] 중간 래픽토링
+
+### (v 4.01) VideoClip의 역할분리
+
+VideoClip을 enum으로 하여 관리했고 비디오 클립들을 enum에 저장된 values()를 기반으로 관리했었으나  
+VideoClip을 모아두는 역할을 수행하는 VideoClipRepository 인터페이스를 생성했다.  
+또, 이 구현체인 SampeVideoClipRepository 클래스를 생성하였고, 실제로 비디오 클립의 모음집은 인터페이스를 의존하게 했다.  
+
+- 기존의 enum `VideoClip`을 클래스로 변경.
+  - VIDEOS 라는 VideoClip 상수 모음집을 사용했었으나, VideoClip을 모아두는 Repository 인터페이스를 따로 생성했다. (VideoClipRepository)
+  - VideoClipRepository 인터페이스의 구현체로 SampleVideoClipRepository를 생성했다.
+  - Prompt에서 비디오 모음집을 VidoeClip.VIDEO_CLIPS를 의존했던 것을, VideoClipRepository 인터페이스의 findAll 메서드를 의존하게 했다.
+  - 변경된 VideoClip의 테스트코드를 재작성했다.
+
+---
+
